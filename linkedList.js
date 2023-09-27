@@ -77,6 +77,18 @@ const LinkedList = () => {
         currentNode.next = null;
     }
 
+    const contains = (item) => {
+        let currentNode = list.head;
+
+        while (currentNode !== null) {
+
+            if (currentNode.value == item) return true
+            currentNode = currentNode.next
+        }
+        
+        return false
+    }
+
     return {
         list,
         append,
@@ -85,7 +97,8 @@ const LinkedList = () => {
         head,
         tail,
         at,
-        pop
+        pop,
+        contains
     }
 }
 
@@ -97,8 +110,8 @@ firstList.append(30);
 firstList.prepend(300);
 
 console.log(JSON.stringify(firstList.list))
-firstList.pop()
-console.log(JSON.stringify(firstList.list))
+console.log(firstList.contains(30))
+
 
 
 
