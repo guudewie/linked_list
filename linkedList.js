@@ -24,23 +24,28 @@ const LinkedList = () => {
         else list.head = { value : value, next : list.head}
     }
 
+    const size = () => {
+
+        if (list.head === null) return 0
+
+        let currentNode = list.head;
+        let counter = 1; // initialize counter to one to account for first node
+
+        while (currentNode.next !== null) {
+            currentNode = currentNode.next
+            counter++
+        }
+        return counter
+    }
 
     return {
         list,
         append,
-        prepend
+        prepend,
+        size
     }
 }
 
-const firstList = LinkedList();
-firstList.append(10);
-firstList.append(20);
-firstList.prepend(30);
-firstList.append(40);
-
-
-
-console.log(JSON.stringify(firstList.list))
 
 
 
