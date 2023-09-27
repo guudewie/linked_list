@@ -38,14 +38,40 @@ const LinkedList = () => {
         return counter
     }
 
+    const head = () => {
+        return list.head.value
+    }
+
+    const tail = () => {
+        let currentNode = list.head;
+
+        while (currentNode.next !== null) {
+            currentNode = currentNode.next
+        }
+        
+        return currentNode.value
+    }
+
     return {
         list,
         append,
         prepend,
-        size
+        size,
+        head,
+        tail
     }
 }
 
+
+const firstList = LinkedList();
+firstList.append(10);
+firstList.append(20);
+firstList.append(30);
+firstList.prepend(300);
+
+
+console.log(firstList.head())
+console.log(firstList.tail())
 
 
 
