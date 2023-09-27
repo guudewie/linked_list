@@ -20,12 +20,8 @@ const LinkedList = () => {
  
     const prepend = (value) => {
 
-        if (list.head === null) {
-            list.head = { value : value, next : null}
-            return
-        }
-
-        list.head = { value : value, next : list.head}
+        if (list.head === null) list.head = { value : value, next : null}
+        else list.head = { value : value, next : list.head}
     }
 
 
@@ -39,10 +35,12 @@ const LinkedList = () => {
 const firstList = LinkedList();
 firstList.append(10);
 firstList.append(20);
-firstList.prepend(30)
+firstList.prepend(30);
+firstList.append(40);
 
 
-console.log(firstList.list)
+
+console.log(JSON.stringify(firstList.list))
 
 
 
