@@ -1,7 +1,7 @@
 
 const LinkedList = () => {
 
-    const list = { head: null}
+    let list = { head: null};
 
     const append = (value) => {
 
@@ -52,26 +52,53 @@ const LinkedList = () => {
         return currentNode.value
     }
 
+    const at = (index) => {
+        
+        let currentNode = list.head;
+        let currentIndex = 1;
+
+        while (currentIndex !== index) {
+            if (currentNode.next == null) throw new Error("Index too big")
+            currentNode = currentNode.next;
+            currentIndex++
+        }
+
+        return currentNode.value
+    }
+
+    const pop = () => {
+        let currentNode = list.head;
+
+        // set condition to set.set to stop one element before the last one
+        while (currentNode.next.next !== null) {
+            currentNode = currentNode.next;
+        }
+        
+        currentNode.next = null;
+    }
+
     return {
         list,
         append,
         prepend,
         size,
         head,
-        tail
+        tail,
+        at,
+        pop
     }
 }
 
-
 const firstList = LinkedList();
+
 firstList.append(10);
 firstList.append(20);
 firstList.append(30);
 firstList.prepend(300);
 
-
-console.log(firstList.head())
-console.log(firstList.tail())
+console.log(JSON.stringify(firstList.list))
+firstList.pop()
+console.log(JSON.stringify(firstList.list))
 
 
 
