@@ -89,6 +89,36 @@ const LinkedList = () => {
         return false
     }
 
+    const find = (item) => {
+        let currentNode = list.head;
+        let index = 0; // first item in list has index 0
+
+        while (currentNode !== null) {
+
+            if (currentNode.value == item) return index
+            currentNode = currentNode.next
+            index++
+        }
+        
+        return null
+    }
+
+    const toString = () => {
+        let currentNode = list.head;
+        let listString = "";
+
+        while (currentNode !== null) {
+            listString += `( ${currentNode.value} ) --> `
+            currentNode = currentNode.next
+        }
+
+        listString += "null"
+
+        return listString
+    }
+
+
+
     return {
         list,
         append,
@@ -98,7 +128,9 @@ const LinkedList = () => {
         tail,
         at,
         pop,
-        contains
+        contains,
+        find,
+        toString
     }
 }
 
@@ -110,7 +142,7 @@ firstList.append(30);
 firstList.prepend(300);
 
 console.log(JSON.stringify(firstList.list))
-console.log(firstList.contains(30))
+console.log(firstList.toString())
 
 
 
