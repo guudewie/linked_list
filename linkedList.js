@@ -160,6 +160,7 @@ const LinkedList = () => {
     }
 }
 
+// UNCOMMENT TO CREATE BASIC LIST
 // const firstList = LinkedList();
 
 // firstList.append(10);
