@@ -1,4 +1,3 @@
-
 const LinkedList = () => {
 
     let list = { head: null};
@@ -117,6 +116,31 @@ const LinkedList = () => {
         return listString
     }
 
+    const insertAt = (value, index) => {
+
+        let currentNode = list.head;
+
+        // stop two before index to be able to next currentNode.next
+        for (let counter = 0; counter <= index - 2; counter++){
+            if (currentNode.next == null) throw new Error("Index too big")
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = { value : value, next : currentNode.next}
+    }
+
+    const removeAt = (index) => {
+
+        let currentNode = list.head;
+
+        // stop two before index to be able to next currentNode.next
+        for (let counter = 0; counter <= index - 2; counter++){
+            if (currentNode.next == null) throw new Error("Index too big")
+            currentNode = currentNode.next;
+        }
+        // jump one node by setting next to the second next
+        currentNode.next = currentNode.next.next
+    }
 
 
     return {
@@ -130,37 +154,17 @@ const LinkedList = () => {
         pop,
         contains,
         find,
-        toString
+        toString,
+        insertAt,
+        removeAt
     }
 }
 
-const firstList = LinkedList();
+// const firstList = LinkedList();
 
-firstList.append(10);
-firstList.append(20);
-firstList.append(30);
-firstList.prepend(300);
-
-console.log(JSON.stringify(firstList.list))
-console.log(firstList.toString())
-
-
-
-
-
-
-const Node = (value = null, nextNode = null) => {
-
-    const getValue = () => value;
-    const setValue = (newValue) => value = newValue;
-
-    const getNextNode = () => nextNode;
-    const setNextNode = (newNextNode) => nextNode = newNextNode;
-
-    return {
-        getValue,
-        setValue,
-        getNextNode,
-        setNextNode
-    }
-}
+// firstList.append(10);
+// firstList.append(20);
+// firstList.append(30);
+// firstList.append(40);
+// firstList.append(50);
+// firstList.append(60);
